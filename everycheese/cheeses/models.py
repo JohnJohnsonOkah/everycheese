@@ -11,7 +11,7 @@ class Cheese(TimeStampedModel):
         SOFT = "soft", "Soft"
         SEMI_SOFT = "semi-soft", "Semi-Soft"
         SEMI_HARD = "semi-hard", "Semi-Hard"
-        HARD = "hard", "HARD"
+        HARD = "hard", "Hard"
 
     name = models.CharField("Name of cheese", max_length=255)
     slug = AutoSlugField("Cheese Address", unique=True,
