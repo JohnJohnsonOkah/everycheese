@@ -13,9 +13,7 @@ APPS_DIR = BASE_DIR.path("everycheese")
 
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool(
-    "DJANGO_READ_DOT_ENV_FILE", default=False
-)
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(BASE_DIR.path(".env")))
@@ -52,9 +50,7 @@ DATABASES = {
     # The DATABASE_URL environment variables
     # expect a value in the following format:
     # DATABASE_URL=postgres://user:password@hostname_or_ip:port/database_name
-    "default": env.db(
-        "DATABASE_URL", default="postgres:///everycheese"
-    )
+    "default": env.db("DATABASE_URL", default="postgres:///everycheese")
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -83,6 +79,7 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "django_countries",
 ]
 
 LOCAL_APPS = [
@@ -95,9 +92,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {
-    "sites": "everycheese.contrib.sites.migrations"
-}
+MIGRATION_MODULES = {"sites": "everycheese.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -128,9 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
     },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"
     },
@@ -287,9 +280,7 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "everycheese.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = (
-    "everycheese.users.adapters.SocialAccountAdapter"
-)
+SOCIALACCOUNT_ADAPTER = "everycheese.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
